@@ -7,131 +7,82 @@ var change_top = document.querySelector('.go_top');
 var change_top_alternate = document.querySelector('.go_top_alternate');
 console.log(change_top);
 var top_color = document.querySelector('.triangle_top');
+
 var change_bottom = document.querySelector('.go_bottom');
 var change_bottom_alternate = document.querySelector('.go_bottom_alternate');
 console.log(change_bottom);
 var bottom_color = document.querySelector('.triangle_bottom');
+
 var slider_objects = document.querySelectorAll('.slider_element');
 console.log(slider_objects);
 
-change_top_alternate.classList.add('hide_me');
+var list_elements = document.querySelector('.list_elements');
+
+
+change_top.classList.add('hide_me');
 change_bottom.classList.add('hide_me');
 
+slider_objects[1].classList.add('large_img');
 
 
+var j = 1;
 
-var j = 0;
 change_bottom_alternate.addEventListener('click', function() {
 
-    // slider_objects[i].classList.add('large_img');
-    // slider_objects[j].classList.add('translate_bottom');
-    slider_objects[j].classList.add('hide_me');//pierwszy u gory widoczny film chowamy
+    // slider_objects[j-1].classList.remove('small_img');
+    // slider_objects[j].classList.add('small_img');
 
-    // slider_objects[i+1].classList.remove('large_img');
-    // slider_objects[(j-1+10)%10].classList.add('translate_bottom');
+    slider_objects[j].classList.remove('large_img');
+    slider_objects[j+1].classList.add('large_img');
 
-    // slider_objects[(j-2+10)%10].classList.add('translate_bottom');
-    slider_objects[j+3].classList.remove('hide_me');//pierwszy u dolu niewidoczny film pokazujemy
+    list_elements.style.transitionDuration = '1.5s';
+    list_elements.style.transform = 'translateY(' + j * (-150) + 'px)';
 
-
-    // console.log(j);
-    if (j >= 6) {
-        // console.log(change_bottom);
+    j = j + 1;
+    if (j === 9) {
         change_bottom.classList.remove('hide_me');
         change_bottom_alternate.classList.add('hide_me');
-        // console.log(change_top_alternate);
-        change_top.classList.add('hide_me');
-        change_top_alternate.classList.remove('hide_me');
-        console.log(j + ' w 1 bot');
-        // j = j % 6;
-    } else if (j > 0) {
-        change_top.classList.add('hide_me');
-        change_top_alternate.classList.remove('hide_me');
-        change_bottom.classList.add('hide_me');
-        change_bottom_alternate.classList.remove('hide_me');
-        j = j + 1;
-        console.log(j + ' w 3 bot');
-    } else if (j === 0) {
-        change_top.classList.add('hide_me');
-        change_top_alternate.classList.remove('hide_me');
-        j = j + 1;
-        console.log(j);
-    } else {
-        console.log('coś poszło nie tak');
-    }
-})
-
-// console.log(j);
-
-// console.log(j);
-
-
-
-change_top_alternate.addEventListener('click', function() {
-    console.log(j);
-    // j = j + 6;
-
-    // slider_objects[i].classList.add('large_img');
-    // slider_objects[i].classList.add('translate_top');
-    slider_objects[j-1].classList.remove('hide_me');//pierwszy u gory niewidoczny film pokazujemy
-    // console.log(slider_objects[i]);
-    slider_objects[j+2].classList.add('hide_me');//pierwszy u dolu widoczny film chowamy
-    // console.log(slider_objects[i+3]);
-    // console.log(slider_objects[i]);
-    // i = i + 1;
-    // // slider_objects[i+1].classList.remove('large_img');
-    // slider_objects[i+1].classList.add('translate_top');
-    // slider_objects[i+2].classList.add('translate_top');
-    // slider_objects[i+3].classList.add('translate_top');
-    // console.log(slider_objects[i-3]);
-    // slider_objects[i-3].classList.remove('hide_me');
-
-    if (j >= 6)  {
-        change_bottom.classList.add('hide_me');
-        change_bottom_alternate.classList.remove('hide_me');
-        console.log(j + ' w 1 top');
-        j = j - 1;
-    } else if (j > 0) {
-         change_bottom.classList.add('hide_me');
-         change_bottom_alternate.classList.remove('hide_me');
-         console.log(j + ' w 2 top');
-         j = j - 1;
     } else if (j === 0) {
         change_top.classList.remove('hide_me');
         change_top_alternate.classList.add('hide_me');
-        change_bottom.classList.add('hide_me');
-        change_bottom_alternate.classList.remove('hide_me');
-        console.log(j + ' w 3 top');
-        // j = j + 6;
+    } else if (j > 0 && j < 9) {
+        change_top.classList.add('hide_me');
+        change_top_alternate.classList.remove('hide_me');
     } else {
-        console.log('nie działa');
+        console.log('error');
     }
-    // console.log(j);
-    // i = i - 1;
+
 
 })
 
-// change_top_alternate.addEventListener('click', function() {
-//
-//     change_bottom_alternate.addEventListener('click', function() {
-//
-//         i = i - 1;
-//
-//     })
-//
-// })
-//
-// change_bottom_alternate.addEventListener('click', function() {
-//
-//     change_top_alternate.addEventListener('click', function() {
-//
-//         j = j - 1;
-//
-//     })
-//
-// })
+change_top_alternate.addEventListener('click', function() {
+    console.log(j);
 
+    // slider_objects[j-1].classList.remove('small_img');
+    // slider_objects[j].classList.add('small_img');
+    // slider_objects[j+1].classList.remove('small_img');
 
+    slider_objects[j-1].classList.add('large_img');
+    slider_objects[j].classList.remove('large_img');
 
+    list_elements.style.transitionDuration = '1.5s';
+    list_elements.style.transform = 'translateY(' + (-j+2) * 150 + 'px)';
 
+    j = j - 1;
+    console.log(j);
+    if (j === 9) {
+        change_bottom.classList.remove('hide_me');
+        change_bottom_alternate.classList.add('hide_me');
+    } else if (j === 0) {
+        change_top.classList.remove('hide_me');
+        change_top_alternate.classList.add('hide_me');
+    } else if (j > 0 && j < 9) {
+        change_top.classList.add('hide_me');
+        change_top_alternate.classList.remove('hide_me');
+        change_bottom.classList.add('hide_me');
+        change_bottom_alternate.classList.remove('hide_me');
+    } else {
+        console.log('error');
+    }
+})
 });

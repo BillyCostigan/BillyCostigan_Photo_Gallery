@@ -62,49 +62,77 @@ body {
         border-radius: 0 0 5px 5px;
         text-align: center;
     }
-    .slider_list ul {
-        list-style-type: none;
-        margin: 20px;
-        padding: 0 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;;
+    .slider_list {
+        overflow: hidden;
+        position: relative;
+    }
+    .list_elements {
+        position: relative;
+        height: 440px;
+        transform: 2s;
+
     }
     .slider_element {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
         background-color: gray;
-        padding: 15px 25px;
+        margin: 10px 50px;
+        height: 140px;
         border-radius: 5px;
         opacity: 0.5;
         z-index: 0;
-        margin: -10px 0;
+        text-align: center;
     }
     .list_img {
+        // float: left;
         width: 90px;
         height: 135px;
+        display: inline-block;
         margin-left: 5px;
     }
-    // .watch_me {
-    //     display: block;
-    // }
+    .list_text {
+        display: inline-block;
+        width: 50px;
+        // display: table-cell;
+        // padding: 0 50px;
+    }
+    .large_img {
+        animation: darking 2s 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes darking {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    }
+    .small_img {
+        animation: lighting 2s 1;
+        animation-fill-mode: forwards;
+    }
+    @keyframes lighting {
+    0% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    }
     .hide_me {
         display: none;
     }
-    // ul .large_img {
-    //     transform: scale(1.3);
-    //     z-index: 1;
-    //     opacity: 1;
-    // }
-    // ul .translate_top {
-    //     // transform: translateY(0px);
-    //     transition: 2s;
-    // }
-    // ul .translate_bottom {
-    //     // transform: translateY(10px);
-    //     transition: 2s;
-    // }
+    .translate_top {
+        // transform: translateY(' + (-j+2) * 150 + 'px);
+        transform: 2s;
+    }
+    .translate_bottom {
+        // transform: translateY(' + j * (-150) + 'px);
+        transition: 2s;
+    }
     .triangle_bottom {
         width: 0px;
         height:0px;
@@ -121,8 +149,4 @@ body {
         border-top:30px solid #FFC404;
         margin: auto;
     }
-    // .go_bottom_alternate {
-    //     display: none;
-    // }
-
 }
