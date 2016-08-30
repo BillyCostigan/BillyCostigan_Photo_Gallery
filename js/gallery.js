@@ -43,12 +43,15 @@ change_bottom_alternate.addEventListener('click', function() {
         change_top.classList.add('hide_me');
         change_top_alternate.classList.remove('hide_me');
         console.log('top1');
-        // j = j % 6;
+        j = j % 6;
     } else if (j >= 0) {
-        change_top.classList.add('hide_me');
-        change_top_alternate.classList.remove('hide_me');
+
         j = j + 1;
         console.log('top2');
+    } else if (j === 0) {
+        change_top.classList.add('hide_me');
+        change_top_alternate.classList.remove('hide_me');
+        console.log('top4');
     } else {
         j = j + 1;
         console.log('top3');
@@ -88,16 +91,13 @@ change_top_alternate.addEventListener('click', function() {
          change_bottom_alternate.classList.remove('hide_me');
          console.log('>0');
          i = i - 1;
-    }else if (i === 0) {
+    } else {
         change_top.classList.remove('hide_me');
         change_top_alternate.classList.add('hide_me');
         change_bottom.classList.add('hide_me');
         change_bottom_alternate.classList.remove('hide_me');
         console.log('beforelast');
-    } else {
-
-
-        console.log('last');
+        i = i + 6;
     }
     // i = i - 1;
 
