@@ -45,7 +45,10 @@ change_bottom_alternate.addEventListener('click', function() {
         console.log('top1');
         j = j % 6;
     } else if (j >= 0) {
-
+        change_top.classList.add('hide_me');
+        change_top_alternate.classList.remove('hide_me');
+        change_bottom.classList.add('hide_me');
+        change_bottom_alternate.classList.remove('hide_me');
         j = j + 1;
         console.log('top2');
     } else if (j === 0) {
@@ -99,6 +102,7 @@ change_top_alternate.addEventListener('click', function() {
         console.log('beforelast');
         i = i + 6;
     }
+    console.log(i);
     // i = i - 1;
 
 })
