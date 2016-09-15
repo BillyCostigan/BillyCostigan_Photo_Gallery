@@ -5,54 +5,46 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* VARIABLES  -- BEGIN*/
 
+    // variables for slider_small
     var change_top = document.querySelector('.go_top'); // top button with gray triangle without event
     var change_top_alternate = document.querySelector('.go_top_alternate'); // button with yellow triangle with event
     var change_bottom = document.querySelector('.go_bottom'); // bottom button with gray triangle without event
     var change_bottom_alternate = document.querySelector('.go_bottom_alternate'); // bottom button with yellow triangle with event
+    var list_elements_small = document.querySelector('.list_elements_small'); // parent for next various
+    var slider_objects_small = document.querySelectorAll('.slider_element_small'); // parent for divs contain text and image
+    var number_elements_small = slider_objects_small.length; // length of small slider's mobile elements
+    // variables for slider_medium
     var change_right = document.querySelector('.go_right'); // right button with gray triangle without event
     var change_right_alternate = document.querySelector('.go_right_alternate'); // right button with yellow triangle with event
     var change_left = document.querySelector('.go_left'); // left button with gray triangle without event
     var change_left_alternate = document.querySelector('.go_left_alternate'); // left button with yellow triangle with event
-    var list_elements_small = document.querySelector('.list_elements_small'); // parent for divs contain text and image
-    var slider_objects_small = document.querySelectorAll('.slider_element_small'); // parent for previous various
-    var list_elements_medium = document.querySelector('.list_elements_medium'); // parent for divs contain text and image
-    var slider_objects_medium = document.querySelectorAll('.slider_element_medium'); // parent for previous various
-
-    var number_elements_small = slider_objects_small.length;
-    var number_elements_medium = slider_objects_medium.length;
-
-    var forest = document.querySelector('.select_forest');
-    var mountains = document.querySelector('.select_mountains');
-    var desert = document.querySelector('.select_desert');
-    var field = document.querySelector('.select_field');
-    var clouds = document.querySelector('.select_clouds');
-    var water = document.querySelector('.select_water');
-    var build = document.querySelector('.select_build');
-    var select_aside = document.querySelectorAll('.aside_large li');
-    var slider_objects_large = document.querySelectorAll('.slider_element_large');
-    var aside_choose = document.querySelector('.aside_bag');
-    var aside_list = document.querySelector('.aside_list_select');
-    var aside_button = document.querySelector('.aside_button');
-    var cross = document.querySelector('.secret_cross');
-    var header = document.querySelector('.header_title');
-    var section_small = document.querySelector('.slider_small');
-    var section_medium = document.querySelector('.slider_medium');
-    var section_large = document.querySelector('.slider_large');
-
+    var list_elements_medium = document.querySelector('.list_elements_medium'); // parent for next various
+    var slider_objects_medium = document.querySelectorAll('.slider_element_medium'); // parent for divs contain text and image
+    var number_elements_medium = slider_objects_medium.length; // length of medium slider's mobile elements
+    // variables for slider_large
+    var forest = document.querySelector('.select_forest'); // tag 'forest' to select in gallery from 901px
+    var mountains = document.querySelector('.select_mountains'); // tag 'mountains' to select in gallery from 901px
+    var desert = document.querySelector('.select_desert'); // tag 'desert' to select in gallery from 901px
+    var field = document.querySelector('.select_field'); // tag 'field' to select in gallery from 901px
+    var clouds = document.querySelector('.select_clouds'); // tag 'clouds' to select in gallery from 901px
+    var water = document.querySelector('.select_water'); // tag 'water reservoir' to select in gallery from 901px
+    var build = document.querySelector('.select_build'); // tag 'build-up area' to select in gallery from 901px
+    var select_aside = document.querySelectorAll('.aside_large li'); // aside in slider_large to select by tag
+    var slider_objects_large = document.querySelectorAll('.slider_element_large'); // parent for divs contain text and image
+    var aside_choose = document.querySelector('.aside_bag'); // div of aside which show and hide list with tags
+    var aside_list = document.querySelector('.aside_list_select'); // list with tags
+    var aside_button = document.querySelector('.aside_button'); // button which show every photo
+    var cross = document.querySelector('.secret_cross'); // cross who decrease increased photo
+    // begin propositions
     change_top.classList.add('hide_me'); // hide change_top
     change_bottom.classList.add('hide_me'); // hide change_bottom
     change_right.classList.add('hide_me'); // hide change_right
     change_left.classList.add('hide_me'); // hide change_left
-    // aside_list.classList.add('hide_me');
-    // aside_button.classList.remove('hide_me');
-    cross.style.opacity = '0';
-
+    cross.style.opacity = '0'; // hide cross
 
     /* VARIABLES -- END */
 
-    /* SLIDER to 600px -- BEGIN*/
-
-    /* vertical slider -- BEGIN */
+    /* VERTICAL SLIDER to 600px -- BEGIN */
 
     function verticalSlider(j) { // function for verticalSlider to 600px
         for (var k = 0; k < slider_objects_small.length; k++) {
@@ -66,20 +58,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         /* button to bottom -- BEGIN*/
 
-        change_bottom_alternate.addEventListener('click', function() { // function for bootom button
+        change_bottom_alternate.addEventListener('click', function() { // function for bottom button
             slider_objects_small[j].classList.remove('large_img_small');
             slider_objects_small[j + 1].classList.add('large_img_small');
             slider_objects_small[j + 1].classList.remove('small_img_small');
             slider_objects_small[j].classList.add('small_img_small');
             list_elements_small.style.transitionDuration = '1.5s';
             list_elements_small.style.transform = 'translate(0,' + j * (-145) + 'px)';
-            if (j === (number_elements_small - 2)) {
+            if (j === (number_elements_small - 2)) { // position when I change button with yellow triangle with grey triangle
                 change_bottom.classList.remove('hide_me');
                 change_bottom_alternate.classList.add('hide_me');
-            } else if (j === 0) {
+            } else if (j === 0) { // position when I change button with yellow triangle with grey triangle
                 change_top.classList.add('hide_me');
                 change_top_alternate.classList.remove('hide_me');
-            } else if (j > 0 && j < (number_elements_small - 2)) {
+            } else if (j > 0 && j < (number_elements_small - 2)) { // position when I show only buttons with yellow triangle
                 change_top.classList.add('hide_me');
                 change_top_alternate.classList.remove('hide_me');
                 slider_objects_small[j - 1].classList.remove('small_img_small');
@@ -103,13 +95,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 slider_objects_small[j].classList.add('small_img_small');
                 list_elements_small.style.transitionDuration = '1.5s';
                 list_elements_small.style.transform = 'translate(0, ' + (-j + 2) * 145 + 'px)';
-                if (j === (number_elements_small - 1)) {
+                if (j === (number_elements_small - 1)) { // position when I change button with yellow triangle with grey triangle
                     change_bottom.classList.add('hide_me');
                     change_bottom_alternate.classList.remove('hide_me');
-                } else if (j === 1) {
+                } else if (j === 1) { // position when I change button with yellow triangle with grey triangle
                     change_top.classList.remove('hide_me');
                     change_top_alternate.classList.add('hide_me');
-                } else if (j > 1 && j < (number_elements_small - 1)) {
+                } else if (j > 1 && j < (number_elements_small - 1)) { // position when I show only buttons with yellow triangle
                     change_top.classList.add('hide_me');
                     change_top_alternate.classList.remove('hide_me');
                     change_bottom.classList.add('hide_me');
@@ -126,15 +118,11 @@ document.addEventListener("DOMContentLoaded", function() {
             /* button to top -- END */
     }
 
-    /* vertical slider -- END */
+    /* VERTICAL SLIDER to 600px -- END */
 
-    /* SLIDER to 600px -- END*/
+    /* HORIZONTAL SLIDER from 601px to 900px -- BEGIN */
 
-    /* SLIDER to 900px -- BEGIN*/
-
-    /* horizontal slider -- BEGIN */
-
-    function horizontalSlider(i) { // function for horizontalSlider to 600px
+    function horizontalSlider(i) { // function for horizontalSlider from 601px to 900px
         for (var l = 0; l < slider_objects_medium.length; l++) {
             if (slider_objects_medium[l].classList.contains('small_img_medium')) {
                 slider_objects_medium[l].classList.remove('small_img_medium');
@@ -157,17 +145,17 @@ document.addEventListener("DOMContentLoaded", function() {
             slider_objects_medium[i + 1].classList.add('large_img_medium');
             list_elements_medium.style.transitionDuration = '1.5s';
             list_elements_medium.style.transform = 'translate(' + i * (-350) + 'px, 0)';
-            if (i === (number_elements_medium - 2)) {
+            if (i === (number_elements_medium - 2)) { // position when I change button with yellow triangle with grey triangle
                 change_right.classList.remove('hide_me');
                 change_right_alternate.classList.add('hide_me');
                 slider_objects_medium[i + 1].classList.remove('small_img_medium');
                 slider_objects_medium[i].classList.add('small_img_medium');
-            } else if (i === 0) {
+            } else if (i === 0) { // position when I change button with yellow triangle with grey triangle
                 change_left.classList.add('hide_me');
                 change_left_alternate.classList.remove('hide_me');
                 slider_objects_medium[i + 1].classList.remove('small_img_medium');
                 slider_objects_medium[i].classList.add('small_img_medium');
-            } else if (i > 0 && i < (number_elements_medium - 2)) {
+            } else if (i > 0 && i < (number_elements_medium - 2)) { // position when I show only buttons with yellow triangle
                 change_left.classList.add('hide_me');
                 change_left_alternate.classList.remove('hide_me');
                 slider_objects_medium[i - 1].classList.remove('small_img_medium');
@@ -189,17 +177,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 slider_objects_medium[i].classList.remove('large_img_medium');
                 list_elements_medium.style.transitionDuration = '1.5s';
                 list_elements_medium.style.transform = 'translate(' + (-i + 2) * 350 + 'px, 0)';
-                if (i === (number_elements_medium - 1)) {
+                if (i === (number_elements_medium - 1)) { // position when I change button with yellow triangle with grey triangle
                     change_right.classList.add('hide_me');
                     change_right_alternate.classList.remove('hide_me');
                     slider_objects_medium[i - 1].classList.remove('small_img_medium');
                     slider_objects_medium[i].classList.add('small_img_medium');
-                } else if (i === 1) {
+                } else if (i === 1) { // position when I change button with yellow triangle with grey triangle
                     change_left.classList.remove('hide_me');
                     change_left_alternate.classList.add('hide_me');
                     slider_objects_medium[i - 1].classList.remove('small_img_medium');
                     slider_objects_medium[i].classList.add('small_img_medium');
-                } else if (i > 1 && i < (number_elements_medium - 1)) {
+                } else if (i > 1 && i < (number_elements_medium - 1)) { // position when I show only buttons with yellow triangle
                     change_left.classList.add('hide_me');
                     change_left_alternate.classList.remove('hide_me');
                     change_right.classList.add('hide_me');
@@ -216,9 +204,9 @@ document.addEventListener("DOMContentLoaded", function() {
             /* button to left -- END */
     }
 
-    /* horizontal slider -- END */
+    /* HORIZONTAL SLIDER from 601px to 900px -- END */
 
-    /* SLIDER to 900px -- END */
+    /* FUNCTION which select by tag and show every photo from 901px -- BEGIN */
 
     function selectByTag() {
         aside_list.classList.add('hide_me');
@@ -227,31 +215,45 @@ document.addEventListener("DOMContentLoaded", function() {
             aside_list.classList.toggle('hide_me');
         })
         for (var k = 0; k < select_aside.length; k++) {
-            select_aside[k].addEventListener('click', function() {
+            select_aside[k].addEventListener('click', function() { // when I select tag, I hide photos without the tag
                 for (var l = 0; l < slider_objects_large.length; l++) {
                     slider_objects_large[l].classList.add('hide_me');
-                    if (slider_objects_large[l].dataset.tag.indexOf(this.dataset.name) === -1) {
-                    } else {
+                    if (slider_objects_large[l].dataset.tag.indexOf(this.dataset.name) === -1) {} else {
                         slider_objects_large[l].classList.remove('hide_me');
                     }
                 }
                 aside_choose.children[1].innerText = this.dataset.name;
                 aside_list.classList.add('hide_me');
                 aside_button.classList.remove('hide_me');
-
             })
         }
-        aside_button.addEventListener('click', function() {
+        aside_button.addEventListener('click', function() { // when I click button, I show every photo
             for (var m = 0; m < slider_objects_large.length; m++) {
-                slider_objects_large[m].classList.remove('hide_me');
+                slider_objects_large[m].classList.add('visibility_better');
+                if (slider_objects_large[m].classList.contains('hide_me')) {
+                    slider_objects_large[m].classList.remove('hide_me');
+                } else {
+
+                }
                 aside_choose.children[1].innerText = 'select tag';
+                for (var s = 0; s < slider_objects_large.length; s++) {
+                    if (slider_objects_large[s].classList.contains('normal_view')) {
+                        slider_objects_large[s].classList.remove('normal_view');
+                    } else {
+
+                    }
+                }
             }
         })
     }
 
+    /* FUNCTION  which select by tag and show every photo from 901px -- END */
+
+    /* FUNCTION which increase and decrease photo from 901px -- BEGIN */
+
     function showMeBiggest() {
         for (var p = 0; p < slider_objects_large.length; p++) {
-            slider_objects_large[p].addEventListener('click', function() {
+            slider_objects_large[p].addEventListener('click', function() { // when I click photo, photo is bigger
                 for (var s = 0; s < slider_objects_large.length; s++) {
                     if (slider_objects_large[s].classList.contains('normal_view')) {
                         slider_objects_large[s].classList.remove('normal_view');
@@ -271,13 +273,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
         }
-        cross.addEventListener('click', function() {
+        cross.addEventListener('click', function() { // when I click cross, photo is normal
             for (var r = 0; r < slider_objects_large.length; r++) {
                 if (slider_objects_large[r].classList.contains('bigger_view')) {
                     slider_objects_large[r].classList.remove('bigger_view');
                     slider_objects_large[r].classList.add('normal_view');
                 } else {
-
                     slider_objects_large[r].classList.add('visibility_better');
                     slider_objects_large[r].classList.remove('visibility_worse');
                 }
@@ -286,23 +287,24 @@ document.addEventListener("DOMContentLoaded", function() {
             cross.classList.add('visibility_worse');
         })
     }
+    /* FUNCTION which increase and decrease photo from 901px -- END */
 
-    /* FUNCTION 'turn off' and 'turn on' functions by width size -- BEGIN */
+    /* FUNCTIONS which 'turn off' and 'turn on' functions by width size -- BEGIN */
 
-    var savePositionVertical = j;
-    var savePositionHorizontal = i;
+    var savePositionVertical = j; // 1
+    var savePositionHorizontal = i; // 1
 
     function requirementSizeWidth() {
         var width = document.body.clientWidth; // variable who take window's width
-        var j = savePositionVertical;
-        var i = savePositionHorizontal;
+        var j = savePositionVertical; // variable which save actual position in vertical slider
+        var i = savePositionHorizontal; // variable which save actual position in horizontal slider
         if (width <= 600) {
             verticalSlider(j); // call function
-        } else if (width > 600 && width < 901) {
+        } else if (width > 601 && width < 901) {
             horizontalSlider(i); // call function
         } else if (width >= 901) {
-            selectByTag();
-            showMeBiggest();
+            selectByTag(); // call function
+            showMeBiggest(); // call function
             console.log('elo');
         } else {
             console.log('bad width');
@@ -314,13 +316,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function SelectToolsToSize() { //function which call function nieWiem when we change window's width
 
         window.addEventListener('resize', function() {
-            requirementSizeWidth();
+            requirementSizeWidth(); // call function
         })
     }
 
     SelectToolsToSize(); // call function
 
-    /* FUNCTION 'turn off' and 'turn on' functions by width size -- END */
+    /* FUNCTIONS which 'turn off' and 'turn on' functions by width size -- END */
 
 
 });
