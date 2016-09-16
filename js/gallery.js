@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var aside_list = document.querySelector('.aside_list_select'); // list with tags
     var aside_button = document.querySelector('.aside_button'); // button which show every photo
     var cross = document.querySelector('.secret_cross'); // cross who decrease increased photo
+    var mouse_check = document.querySelector('.mouseout_event'); // div which will react for mouseover and mouseout in list with tags
     // begin propositions
     change_top.classList.add('hide_me'); // hide change_top
     change_bottom.classList.add('hide_me'); // hide change_bottom
@@ -210,9 +211,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function selectByTag() {
         aside_list.classList.add('hide_me');
-        aside_choose.addEventListener('click', function() {
-            aside_button.classList.toggle('hide_me');
-            aside_list.classList.toggle('hide_me');
+        mouse_check.addEventListener('mouseover', function() {
+            aside_button.classList.add('hide_me');
+            aside_list.classList.remove('hide_me');
+        })
+        mouse_check.addEventListener('mouseout', function() {
+            aside_button.classList.remove('hide_me');
+            aside_list.classList.add('hide_me');
         })
         for (var k = 0; k < select_aside.length; k++) {
             select_aside[k].addEventListener('click', function() { // when I select tag, I hide photos without the tag
@@ -264,11 +269,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 this.classList.add('bigger_view');
                 cross.classList.remove('visibility_worse');
                 cross.classList.add('visibility_better');
-                for (var i = 0; i < slider_objects_large.length; i++) {
-                    if (slider_objects_large[i].classList.contains('bigger_view')) {
+                for (var t = 0; t < slider_objects_large.length; t++) {
+                    if (slider_objects_large[t].classList.contains('bigger_view')) {
 
                     } else {
-                        slider_objects_large[i].classList.add('visibility_worse');
+                        slider_objects_large[t].classList.add('visibility_worse');
                     }
                 }
             })
@@ -298,14 +303,13 @@ document.addEventListener("DOMContentLoaded", function() {
         var width = document.body.clientWidth; // variable who take window's width
         var j = savePositionVertical; // variable which save actual position in vertical slider
         var i = savePositionHorizontal; // variable which save actual position in horizontal slider
-        if (width <= 600) {
+        if (width < 601) {
             verticalSlider(j); // call function
-        } else if (width > 601 && width < 901) {
+        } else if (width >= 601 && width < 901) {
             horizontalSlider(i); // call function
         } else if (width >= 901) {
             selectByTag(); // call function
             showMeBiggest(); // call function
-            console.log('elo');
         } else {
             console.log('bad width');
         }
@@ -323,6 +327,5 @@ document.addEventListener("DOMContentLoaded", function() {
     SelectToolsToSize(); // call function
 
     /* FUNCTIONS which 'turn off' and 'turn on' functions by width size -- END */
-
 
 });
