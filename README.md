@@ -1,4 +1,4 @@
-# Movies-Gallery
+# BillyCostigan_Photo_Gallery
 
 ### Application created during CodersLab's course in last week of work
 
