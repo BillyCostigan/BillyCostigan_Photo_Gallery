@@ -1,0 +1,6 @@
+{
+  "name": "BillyCostigan_photo_gallery",
+  "tagline": "Photo gallery by sliders & tags",
+  "body": "# Movies-Gallery\r\n\r\n### Application created during CodersLab's course in last week of work\r\n\r\n#### Application contains three main looks:\r\n\r\n * to 600px -- vertical slider\r\n\r\n * from 601px to 900px -- horizontal slider\r\n\r\n * from 901px -- photo gallery sorted by tags\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
