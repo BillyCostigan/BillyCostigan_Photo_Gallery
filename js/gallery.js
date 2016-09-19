@@ -234,20 +234,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         aside_button.addEventListener('click', function() { // when I click button, I show every photo
             for (var m = 0; m < slider_objects_large.length; m++) {
-                slider_objects_large[m].classList.add('visibility_better');
-                if (slider_objects_large[m].classList.contains('hide_me')) {
-                    slider_objects_large[m].classList.remove('hide_me');
-                } else {
-
-                }
+                slider_objects_large[m].classList.remove('hide_me');
+                slider_objects_large[m].classList.remove('normal_view');
+                slider_objects_large[m].classList.remove('visibility_better');
                 aside_choose.children[1].innerText = 'select tag';
-                for (var s = 0; s < slider_objects_large.length; s++) {
-                    if (slider_objects_large[s].classList.contains('normal_view')) {
-                        slider_objects_large[s].classList.remove('normal_view');
-                    } else {
-
-                    }
-                }
             }
         })
     }
